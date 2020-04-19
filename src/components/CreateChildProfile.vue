@@ -10,7 +10,13 @@
       <input type="text" v-model="childForm.username" placeholder="Enter Username" required />
 
       <label class="avatar-title">Choose an avatar:</label>
-      <input type="text" v-model="childForm.avatarUrl" placeholder="Enter avatar animal" required />
+      <input
+        class="avatar-input"
+        type="text"
+        v-model="childForm.avatarUrl"
+        placeholder="Enter avatar animal"
+        required
+      />
 
       <p v-for="animalType in avatarImages" :key="animalType.id" class="animal-type">
         <br />
@@ -26,7 +32,7 @@
 
       <p v-if="childForm.signedUp" class="new-account-msg">You have created an account!</p>
 
-      <button class="sign-up-btn" type="submit" v-on:click="showForm()">Sign Up</button>
+      <button class="sign-up-btn" type="submit" v-on:click="showForm()">Add Child</button>
     </form>
   </div>
 </template>
@@ -171,7 +177,7 @@ export default {
   border: none;
   border-radius: 40px;
   cursor: pointer;
-  width: 100%;
+  width: 40%;
 }
 
 .new-account-msg {
@@ -201,4 +207,9 @@ export default {
 .chosen-animal {
   color: black;
 }
+
+.avatar-input {
+  display: none;
+}
 </style>
+
