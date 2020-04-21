@@ -15,7 +15,11 @@
         existing profile, to catch butterflies to your own collection!
       </p>
       <ul class="gridlist">
-        <li v-for="child in childrenUsers" :key="child.username" class="child-username">
+        <li
+          v-for="child in childrenUsers"
+          :key="child.username"
+          class="child-username"
+        >
           <router-link
             :to="{
               name: 'ChildProfile',
@@ -52,18 +56,18 @@ export default {
     BackButton,
     HowToPlayButton,
     CreateChildProfile,
-    LogOut
+    LogOut,
   },
   data() {
     return {
       childrenUsers: [],
-      username: ""
+      username: "",
     };
   },
   created() {
     const auth = firebase.auth();
 
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         this.username = `Welcome ${user.displayName}`;
       }
@@ -72,11 +76,11 @@ export default {
     firestore()
       .collection(`parents/${window.localStorage.uid}/userProfiles`)
       .get()
-      .then(children => {
-        children.docs.forEach(child => {
+      .then((children) => {
+        children.docs.forEach((child) => {
           this.childrenUsers.push({
             username: child.lm.Ee.proto.mapValue.fields.username.stringValue,
-            avatarUrl: child.lm.Ee.proto.mapValue.fields.avatarUrl.stringValue
+            avatarUrl: child.lm.Ee.proto.mapValue.fields.avatarUrl.stringValue,
           });
         });
       });
@@ -84,8 +88,8 @@ export default {
   methods: {
     addNewChild(newChildUser) {
       this.childrenUsers = [...this.childrenUsers, newChildUser];
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -161,6 +165,7 @@ export default {
   color: black;
   font-weight: bold;
   font-size: 20px;
+  padding-left: 40px;
 }
 
 .child-link {
@@ -199,5 +204,9 @@ export default {
   cursor: pointer;
   margin-top: 30px;
   margin-bottom: 10px;
+}
+
+.gridlist {
+  margin-left: -40px;
 }
 </style>
