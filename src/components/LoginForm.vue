@@ -29,26 +29,18 @@
         />
         <br />
         <p v-if="input.error" class="error">{{ input.error }}</p>
-        <button class="signIn-btn" type="button" v-on:click="login()">
-          Sign In
-        </button>
+        <button class="signIn-btn" type="button" v-on:click="login()">Sign In</button>
         <br />
-
-        <router-link
-          :to="{ name: 'createAccount' }"
-          class="create-account-link"
-        >
-          <button class="create-account-btn">
-            Create An Account
-          </button></router-link
-        >
-
-        <br />
-
-        <router-link :to="{ name: 'instructions' }" class="create-account-link">
-          <button class="create-account-btn">How to Play</button></router-link
-        >
       </form>
+      <router-link :to="{ name: 'createAccount' }" class="create-account-link">
+        <button class="create-account-btn">Create An Account</button>
+      </router-link>
+
+      <br />
+
+      <router-link :to="{ name: 'instructions' }" class="create-account-link">
+        <button class="create-account-btn">How to Play</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -66,13 +58,13 @@ export default {
       input: {
         email: "",
         password: "",
-        error: false,
-      },
+        error: false
+      }
     };
   },
   components: {
     IntroMessage,
-    Header,
+    Header
   },
   methods: {
     login() {
@@ -84,23 +76,23 @@ export default {
             this.input.email.trim(),
             this.input.password
           )
-          .then((cred) => {
+          .then(cred => {
             window.localStorage.setItem("uid", cred.user.uid);
 
             this.$emit("authenticated", true);
             this.$router.replace({
               name: "parentProfile",
-              params: { parentusername: this.input.email },
+              params: { parentusername: this.input.email }
             });
           })
-          .catch((err) => {
+          .catch(err => {
             this.input.error = err.message;
           });
       } else {
         this.input.error = "An email and password must be present";
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -183,13 +175,27 @@ export default {
   font-size: 18px;
   background-color: #d95c26;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 8px 80px 0;
   border: none;
   border-radius: 40px;
   cursor: pointer;
   width: 75%;
-
   color: white;
+}
+
+@media screen and (max-width: 600px) {
+  .create-account-btn {
+    text-decoration: none;
+    font-size: 18px;
+    background-color: #d95c26;
+    padding: 14px 20px;
+    margin: 8px 40px 0;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    width: 75%;
+    color: white;
+  }
 }
 
 .signIn-btn:hover,
