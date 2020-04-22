@@ -3,7 +3,7 @@
     <Header />
     <IntroMessage />
     <div id="login">
-      <form class="login-form">
+      <form v-on:submit.prevent="onSubmit" class="login-form">
         <h1 class="signIn-title">Sign In</h1>
 
         <label class="email-login">Email</label>
