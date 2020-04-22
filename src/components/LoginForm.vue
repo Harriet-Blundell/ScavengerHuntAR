@@ -69,7 +69,10 @@ export default {
 
       if (this.input.email !== "" && this.input.password !== "") {
         auth
-          .signInWithEmailAndPassword(this.input.email, this.input.password)
+          .signInWithEmailAndPassword(
+            this.input.email.trim(),
+            this.input.password
+          )
           .then(cred => {
             window.localStorage.setItem("uid", cred.user.uid);
 
