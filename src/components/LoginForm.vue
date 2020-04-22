@@ -24,6 +24,7 @@
           v-model="input.password"
           placeholder="Enter Password"
           class="password-input"
+          v-on:keyup.enter="login"
           required
         />
         <br />
