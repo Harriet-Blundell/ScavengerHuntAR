@@ -19,9 +19,13 @@
       </p>
 
       <div id="nav">
-        <router-link :to="{ name: 'Collection' }" class="butterfly-collection">Butterfly Collection</router-link>
+        <router-link :to="{ name: 'Collection' }" class="butterfly-collection"
+          >Butterfly Collection</router-link
+        >
         <br />
-        <router-link :to="{ name: 'Butterflyhunt' }" class="go-hunting">Go Hunting</router-link>
+        <router-link :to="{ name: 'Butterflyhunt' }" class="go-hunting"
+          >Go Hunting</router-link
+        >
       </div>
     </div>
   </div>
@@ -40,7 +44,7 @@ export default {
   data() {
     return {
       username: "",
-      avatarUrl: ""
+      avatarUrl: "",
     };
   },
 
@@ -49,8 +53,8 @@ export default {
       firestore()
         .collection(`parents/${window.localStorage.uid}/userProfiles/`)
         .get()
-        .then(children => {
-          children.docs.forEach(child => {
+        .then((children) => {
+          children.docs.forEach((child) => {
             const childRef = child.lm.Ee.proto.mapValue.fields;
 
             if (childRef.username.stringValue === this.$route.params.username) {
@@ -60,7 +64,7 @@ export default {
           });
         });
     }
-  }
+  },
 };
 </script>
 
@@ -93,7 +97,6 @@ export default {
     margin: auto;
     padding: 20px;
     text-align: center;
-    display: grid;
     margin-bottom: 2%;
     box-shadow: 0 8px 6px -6px black;
   }
@@ -123,7 +126,6 @@ export default {
     margin: auto;
     padding: 20px;
     text-align: center;
-    display: grid;
     margin-bottom: 2%;
     box-shadow: 0 8px 6px -6px black;
   }

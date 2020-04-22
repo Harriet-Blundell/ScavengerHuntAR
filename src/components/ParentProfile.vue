@@ -117,7 +117,6 @@ export default {
     margin: auto;
     padding: 20px;
     text-align: center;
-    display: grid;
     margin-bottom: 2%;
     box-shadow: 0 8px 6px -6px black;
   }
@@ -147,7 +146,6 @@ export default {
     margin: auto;
     padding: 20px;
     text-align: center;
-    display: grid;
     margin-bottom: 2%;
     box-shadow: 0 8px 6px -6px black;
   }
