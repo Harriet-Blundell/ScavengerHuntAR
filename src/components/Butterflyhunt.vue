@@ -11,7 +11,7 @@
 <script>
 import BackButton from "./BackButton";
 import HowToPlayButton from "./HowToPlayButton";
-
+import { firestore } from "firebase";
 export default {
   name: "Butterflyhunt",
   data() {
@@ -19,7 +19,15 @@ export default {
       url: this.URLMaker()
     };
   },
+
   components: { BackButton, HowToPlayButton },
+  created() {
+    firestore()
+      .doc(
+        `parents/${window.localStorage.uid}/userProfiles/${this.$route.params.username}`
+      )
+      .update({ collectionUpdate: true });
+  },
   methods: {
     URLMaker() {
       const newUrl =
