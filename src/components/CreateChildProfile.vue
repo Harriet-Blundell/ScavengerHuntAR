@@ -3,27 +3,44 @@
     <button
       class="create-child-link"
       v-on:click="childForm.showForm = !childForm.showForm"
-    >New Player</button>
+    >
+      New Player
+    </button>
 
-    <form id="new-child-account-login" @submit="addNewChildUser" v-if="childForm.showForm">
+    <form
+      id="new-child-account-login"
+      @submit="addNewChildUser"
+      v-if="childForm.showForm"
+    >
       <label class="child-username">Username:</label>
-      <input type="text" v-model="childForm.username" placeholder="Enter Username" required />
+      <input
+        type="text"
+        v-model="childForm.username"
+        placeholder="Enter Username"
+        required
+      />
       <b>Select a user image:</b>
       <ul class="gridicons">
-        <li v-for="animalType in avatarImages" :key="animalType.id" class="animal-type">
+        <li
+          v-for="animalType in avatarImages"
+          :key="animalType.id"
+          class="animal-type"
+        >
           <br />
           <img
             :src="animalType.imageUrl"
             :key="animalType.id"
             class="avatar-img"
-            @click="childForm.avatarUrl = animalType.imageUrl;"
+            @click="childForm.avatarUrl = animalType.imageUrl"
           />
           <br />
           {{ animalType.animal }}
         </li>
       </ul>
 
-      <label class="avatar-title">If you have a custom user image, you can post the url here:</label>
+      <label class="avatar-title"
+        >If you have a custom user image, you can post the url here:</label
+      >
       <input
         type="text"
         v-model="childForm.avatarUrl"
@@ -31,9 +48,13 @@
         required
       />
 
-      <p v-if="childForm.signedUp" class="new-account-msg">You have created an account!</p>
+      <p v-if="childForm.signedUp" class="new-account-msg">
+        You have created an account!
+      </p>
 
-      <button class="sign-up-btn" type="submit" v-on:click="showForm()">Create Profile!</button>
+      <button class="sign-up-btn" type="submit" v-on:click="showForm()">
+        Create Profile!
+      </button>
     </form>
   </div>
 </template>
@@ -49,46 +70,46 @@ export default {
         username: "",
         avatarUrl: "",
         signedUp: false,
-        showForm: false
+        showForm: false,
       },
       avatarImages: [
         {
           id: 1,
           animal: "Elephant",
           imageUrl: require("../assets/Images/Elephant.png"),
-          chosen: false
+          chosen: false,
         },
         {
           id: 2,
           animal: "Lion",
           imageUrl: require("../assets/Images/Lion.png"),
-          chosen: false
+          chosen: false,
         },
         {
           id: 3,
           animal: "Bunny",
           imageUrl: require("../assets/Images/Bunny.png"),
-          chosen: false
+          chosen: false,
         },
         {
           id: 4,
           animal: "Panda",
           imageUrl: require("../assets/Images/Panda.png"),
-          chosen: false
+          chosen: false,
         },
         {
           id: 5,
           animal: "Penguin",
           imageUrl: require("../assets/Images/Penguin.png"),
-          chosen: false
+          chosen: false,
         },
         {
           id: 6,
           animal: "Koala",
           imageUrl: require("../assets/Images/Koala.png"),
-          chosen: false
-        }
-      ]
+          chosen: false,
+        },
+      ],
     };
   },
   methods: {
@@ -101,18 +122,18 @@ export default {
 
       docRef.set({
         username: this.childForm.username,
-        avatarUrl: this.childForm.avatarUrl
+        avatarUrl: this.childForm.avatarUrl,
       });
 
       const newChildUser = {
         username: this.childForm.username,
-        avatarUrl: this.childForm.avatarUrl
+        avatarUrl: this.childForm.avatarUrl,
       };
 
       this.$emit("add-new-child", newChildUser);
       this.childForm.username = "";
       this.childForm.avatarUrl = "";
-    }
+    },
   },
   showForm() {
     this.childForm.username.length !== 0 &&
@@ -120,7 +141,7 @@ export default {
       ? (this.childForm.signedUp = !this.childForm.signedUp)
       : (this.childForm.signedUp = false);
   },
-  chosenAvatar() {}
+  chosenAvatar() {},
 };
 </script>
 
@@ -225,7 +246,6 @@ export default {
 }
 @media screen and (min-width: 700px) {
   .gridicons {
-    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     list-style: none;
     column-count: 3;
@@ -236,7 +256,6 @@ export default {
 }
 @media screen and (max-width: 699px) {
   .gridicons {
-    display: grid;
     grid-template-columns: 1fr 1fr;
     list-style: none;
     column-count: 2;
@@ -247,5 +266,9 @@ export default {
     margin-top: 1em;
     margin-bottom: 1em;
   }
+}
+
+.gridicons {
+  margin-left: -40px;
 }
 </style>
