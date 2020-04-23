@@ -43,6 +43,8 @@ export default {
 }
 
 .top-btn:hover {
-  opacity: 10%;
+  opacity: 0.7;
+  background: linear-gradient(to bottom, #acbdba 5%, #e6af2e 100%);
+  background-color: #acbdba;
 }
 </style>
