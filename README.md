@@ -22,7 +22,7 @@ View the live site here:  https://butterflyhunt.co.uk/
 
 ## The Augmented Reality Application
 
-If you're interested in this project please feel free to check out the github repo for the Vue Front End over [here](https://github.com/conwayhub/Butterfly-Hunt-AR)
+If you're interested in this project please feel free to check out the github repo for the Augmented Reality Application over [here](https://github.com/conwayhub/Butterfly-Hunt-AR)
 
 ## The Back End
 
